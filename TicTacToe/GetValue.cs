@@ -8,12 +8,15 @@ namespace IO
 {
     class GetValue
     {
-        public static int GetIntAnswer(int min, int max)
+        public static int GetIntAnswer(string question, int min, int max)
         {
             string strAnswer;
             int intAnswer;
-            string question = "Your Choice? ";
-            string errorMessage = "Please enter a number between 1 and 4";
+            string errorMessage;
+            StringBuilder errorMessageBldr = new StringBuilder("Please enter a number between ");
+
+            errorMessageBldr.AppendFormat("{0} and {1}", min.ToString(), max.ToString());
+            errorMessage = errorMessageBldr.ToString();
 
             while (true)
             {
@@ -39,48 +42,130 @@ namespace IO
             string question = "Who's ganna first(1/2)? ";
 
             string userName1, userName2;
-            string userStone1, userStone2;
+            char userStone1, userStone2;
             int firstPlayer;
 
             Console.WriteLine(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + (contents.Length / 2)) + "}", contents));
+            Console.WriteLine();
+            Console.WriteLine();
 
-            Console.Write(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + ((name1.Length - 10) / 2)) + "}", name1));
+            userName1 = GetName(name1);
+            Console.WriteLine();
+            userStone1 = GetStone(stone1);
+            Console.WriteLine();
+            userName2 = GetName(name2, userName1);
+            Console.WriteLine();
+            userStone2 = GetStone(stone2, userStone1);
+            Console.WriteLine();
+            Console.WriteLine();
 
+            firstPlayer = GetIntAnswer(question,1, 2);
         }
 
-        // 예외처리
-        //1. 15자를 초과하는 문자 입력
-        //2. 공백
-        //3. player2의 경우 player1과 중복되는 이름일 경우
-        //public string getStrAnswer()
-        //{
+        public static string GetName(string question)
+        {
+            string name;
+            string errorMessage = "Please enter within 15 characters";
 
-        //}
+            while (true)
+            {
+                Console.Write(String.Format("{0," + ((Console.WindowWidth / 2) + ((question.Length - 3) / 2)) + "}", question));
+                name = Console.ReadLine();
 
-        //public string getStrAnswer(string nameOfPlayer1)
-        //{
+                if (name.Length > 15 || name.Length == 0) Print.Error(errorMessage);
+                else break;
+            }
 
-        //}
+            return name;
+        }
+        
+        public static string GetName(string question, string player1)
+        {
+            string name;
+            string errorMessage = "Please enter within 15 characters";
+            string overlapErrorMessage = "Please enter a different name from Player 1";
+            
+            while (true)
+            {
+                Console.Write(String.Format("{0," + ((Console.WindowWidth / 2) + ((question.Length - 3) / 2)) + "}", question));
+                name = Console.ReadLine();
 
-        //예외처리
-        //    1. 공백
-        //    2. 두 문자 이상
-        //    3. Player2의 경우 중복허용X
-        //    4. 게임판과 겹치는 원문자
-        //    5. Computer와 대결하는 경우 I, G
-        //public char getCharAnswer()
-        //{
+                if (name.Length > 15 || name.Length == 0) Print.Error(errorMessage);
+                else if (name == player1) Print.Error(overlapErrorMessage);
+                else break;
+            }
 
-        //}
+            return name;
+        }
+       
+        public static char GetStone(string question)
+        {
+            string strStone;
+            char charStone;
+            string errorMessage = "Please enter 1 character for stone";
+            string overlapErrormessage = "Please enter 1 character except circle character";
 
-        //public char getCharAnswer(char stoneOfPlayer1)
-        //{
+            while (true)
+            {
+                Console.Write(String.Format("{0," + ((Console.WindowWidth / 2) + ((question.Length - 3) / 2)) + "}", question));
+                strStone = Console.ReadLine();
 
-        //}
+                if (strStone.Length > 1 || strStone.Length == 0) Print.Error(errorMessage);
+                else if (strStone[0] >= '①' && strStone[0] <= '⑨') Print.Error(overlapErrormessage);
+                else break;
+            }
 
-        //public char getCharAnswer(char idiot, char genius)
-        //{
+            charStone = strStone[0];
 
-        //}
+            return charStone;
+        }
+
+        public static char GetStone(string question, char player1)
+        {
+            string strStone;
+            char charStone;
+            string errorMessage = "Please enter 1 character for stone";
+            string overlapErrormessage = "Please enter 1 character except circle character";
+            string overlapErrormessage1 = "Please enter 1 character different from player 1's";
+
+            while (true)
+            {
+                Console.Write(String.Format("{0," + ((Console.WindowWidth / 2) + ((question.Length - 3) / 2)) + "}", question));
+                strStone = Console.ReadLine();
+
+                if (strStone.Length > 1 || strStone.Length == 0) Print.Error(errorMessage);
+                else if (strStone[0] >= '①' && strStone[0] <= '⑨') Print.Error(overlapErrormessage);
+                else if (strStone[0] == player1) Print.Error(overlapErrormessage1);
+                else break;
+            }
+
+            charStone = strStone[0];
+
+            return charStone;
+        }
+
+        public static char GetStone(string question, char idiot, char genius)
+        {
+            string strStone;
+            char charStone;
+            string errorMessage = "Please enter 1 character for stone";
+            string overlapErrormessage = "Please enter 1 character except circle character";
+            string overlapErrormessage1 = "Please enter 1 character different from computer";
+
+            while (true)
+            {
+                Console.Write(String.Format("{0," + ((Console.WindowWidth / 2) + ((question.Length - 3) / 2)) + "}", question));
+                strStone = Console.ReadLine();
+
+                if (strStone.Length > 1 || strStone.Length == 0) Print.Error(errorMessage);
+                else if (strStone[0] >= '①' && strStone[0] <= '⑨') Print.Error(overlapErrormessage);
+                else if (strStone[0] == idiot || strStone[0] == genius) Print.Error(overlapErrormessage1);
+                else break;
+            }
+
+            charStone = strStone[0];
+
+            return charStone;
+        }
     }
 }

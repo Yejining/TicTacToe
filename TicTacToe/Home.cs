@@ -15,7 +15,7 @@ namespace Scene
 
             Print.Title(sceneName);
             Print.HomeOption();
-            option = GetValue.GetIntAnswer(1, 4);
+            option = GetValue.GetIntAnswer("Your Choice? ", 1, 4);
 
             Routine.HomeNextStage(option);
         }
