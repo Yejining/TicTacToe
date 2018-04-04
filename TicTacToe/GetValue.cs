@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Progress;
 
-namespace TicTacToe
+namespace IO
 {
     class GetValue
     {
-        Print print = new Print();
-
-        public int GetIntAnswer(int min, int max)
+        public static int GetIntAnswer(int min, int max)
         {
             string strAnswer;
             int intAnswer;
@@ -24,10 +23,29 @@ namespace TicTacToe
                 Int32.TryParse(strAnswer, out intAnswer);
 
                 if (intAnswer >= min && intAnswer <= max) break;
-                else print.Error(errorMessage);
+                else Print.Error(errorMessage);
             }
 
             return intAnswer;
+        }
+
+        public static void USettingInfo()
+        {
+            string contents = "[User Information]               ";
+            string name1 = "Name of Player 1 : ";
+            string name2 = "Name of Palyer 2 : ";
+            string stone1 = "Stone of Player 1 : ";
+            string stone2 = "Stone of Player 2 : ";
+            string question = "Who's ganna first(1/2)? ";
+
+            string userName1, userName2;
+            string userStone1, userStone2;
+            int firstPlayer;
+
+            Console.WriteLine(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + (contents.Length / 2)) + "}", contents));
+
+            Console.Write(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + ((name1.Length - 10) / 2)) + "}", name1));
+
         }
 
         // 예외처리

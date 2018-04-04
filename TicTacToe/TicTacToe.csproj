@@ -43,7 +43,7 @@
     <Compile Include="GetValue.cs" />
     <Compile Include="Home.cs" />
     <Compile Include="MainTicTacToe.cs" />
-    <Compile Include="Progress.cs" />
+    <Compile Include="Routine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="UvsCSettingInfo.cs" />

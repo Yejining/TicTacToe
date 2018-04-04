@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Scene;
 
-namespace TicTacToe
+namespace Main
 {
     class MainTicTacToe
     {
         static void Main(string[] args)
-        {
-            Home home = new Home();
-            
-            home.Select("Select");
+        {            
+            Home.Select("Select");
         }
     }
 }
