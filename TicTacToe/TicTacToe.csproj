@@ -47,7 +47,9 @@
     <Compile Include="Routine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Print.cs" />
+    <Compile Include="UvsCGame.cs" />
     <Compile Include="UvsCSettingInfo.cs" />
+    <Compile Include="UvsUGame.cs" />
     <Compile Include="UvsUSettingInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

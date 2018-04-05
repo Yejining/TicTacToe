@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Progress;
+
+using Data;
+using Scene;
 
 namespace IO
 {
@@ -45,6 +47,9 @@ namespace IO
             char userStone1, userStone2;
             int firstPlayer;
 
+            DataManager player1 = new DataManager();
+            DataManager player2 = new DataManager();
+
             Console.WriteLine(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + (contents.Length / 2)) + "}", contents));
             Console.WriteLine();
             Console.WriteLine();
@@ -60,6 +65,19 @@ namespace IO
             Console.WriteLine();
 
             firstPlayer = GetIntAnswer(question,1, 2);
+
+            if (firstPlayer == 1)
+            {
+                player1.Player(userName1, userStone1, 1);
+                player2.Player(userName2, userStone2, 2);
+            }
+            else
+            {
+                player1.Player(userName1, userStone1, 2);
+                player2.Player(userName2, userStone2, 1);
+            }
+
+            UvsUGame.Game(player1, player2);
         }
 
         public static void CSettingInfo()
@@ -77,6 +95,9 @@ namespace IO
             int computerType;
             int firstPlayer;
 
+            DataManager player1 = new DataManager();
+            DataManager player2 = new DataManager();
+
             Console.WriteLine(String.Format("\n{0," + ((Console.WindowWidth / 2) + (content1.Length / 2)) + "}", content1));
             Console.WriteLine();
 
@@ -93,14 +114,20 @@ namespace IO
 
             firstPlayer = GetIntAnswer(question2, 1, 2);
 
+            if (firstPlayer == 1)
+            {
+                player1.Player(userName, userStone, 1);
+                if (computerType == 1) player2.Player("Idiot", 'I', 2);
+                else player2.Player("Genius", 'G', 2);
+            }
+            else
+            {
+                player1.Player(userName, userStone, 2);
+                if (computerType == 1) player2.Player("Idiot", 'I', 1);
+                else player2.Player("Genius", 'G', 1);
+            }
 
-            //userName2 = GetName(name2, userName1);
-            //Console.WriteLine();
-            //userStone2 = GetStone(stone2, userStone1);
-            //Console.WriteLine();
-            //Console.WriteLine();
-
-            //firstPlayer = GetIntAnswer(question, 1, 2);
+            UvsCGame.Game(player1, player2);
         }
 
         public static string GetName(string question)

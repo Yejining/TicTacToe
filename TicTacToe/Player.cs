@@ -5,7 +5,32 @@ using System.Text;
 
 namespace Data
 {
-    class Player
+    struct DataManager
     {
+        private string name;
+        private char stone;
+        private int turn;
+
+        public void Player (string name, char stone, int turn)
+        {
+            this.name = name;
+            this.stone = stone;
+            this.turn = turn;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public char GetStone()
+        {
+            return stone;
+        }
+
+        public int GetTurn()
+        {
+            return turn;
+        }
     }
 }
