@@ -62,6 +62,47 @@ namespace IO
             firstPlayer = GetIntAnswer(question,1, 2);
         }
 
+        public static void CSettingInfo()
+        {
+            string content1 = "[User Information]               ";
+            string name = "Name of Player : ";
+            string stone = "Stone of Palyer : ";
+            string content2 = "[Your Oppenent]                  ";
+            string computer = "1. Idiot(I)        2. Genius(G)";
+            string question1 = "Who's your oppenent? ";
+            string question2 = "Who's ganna first(1/2)? ";
+
+            string userName;
+            char userStone;
+            int computerType;
+            int firstPlayer;
+
+            Console.WriteLine(String.Format("\n{0," + ((Console.WindowWidth / 2) + (content1.Length / 2)) + "}", content1));
+            Console.WriteLine();
+
+            userName = GetName(name);
+            Console.WriteLine();
+            userStone = GetStone(stone);
+
+            Console.WriteLine(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + (content2.Length / 2)) + "}", content2));
+            Console.WriteLine(String.Format("\n{0," + ((Console.WindowWidth / 2) + (computer.Length / 2)) + "}", computer));
+            Console.WriteLine();
+
+            computerType = GetIntAnswer(question1, 1, 2);
+            Console.WriteLine();
+
+            firstPlayer = GetIntAnswer(question2, 1, 2);
+
+
+            //userName2 = GetName(name2, userName1);
+            //Console.WriteLine();
+            //userStone2 = GetStone(stone2, userStone1);
+            //Console.WriteLine();
+            //Console.WriteLine();
+
+            //firstPlayer = GetIntAnswer(question, 1, 2);
+        }
+
         public static string GetName(string question)
         {
             string name;

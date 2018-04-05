@@ -11,6 +11,7 @@ namespace Scene
         public static void Setting(string sceneName)
         {
             Print.Title(sceneName);
+            GetValue.CSettingInfo();
         }
     }
 }
