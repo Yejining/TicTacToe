@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Data;
+using DataManager;
 using Scene;
 
 namespace IO
@@ -47,8 +47,8 @@ namespace IO
             char userStone1, userStone2;
             int firstPlayer;
 
-            DataManager player1 = new DataManager();
-            DataManager player2 = new DataManager();
+            PlayerInfo player1 = new PlayerInfo();
+            PlayerInfo player2 = new PlayerInfo();
 
             Console.WriteLine(String.Format("\n\n{0," + ((Console.WindowWidth / 2) + (contents.Length / 2)) + "}", contents));
             Console.WriteLine();
@@ -95,8 +95,8 @@ namespace IO
             int computerType;
             int firstPlayer;
 
-            DataManager player1 = new DataManager();
-            DataManager player2 = new DataManager();
+            PlayerInfo player1 = new PlayerInfo();
+            PlayerInfo player2 = new PlayerInfo();
 
             Console.WriteLine(String.Format("\n{0," + ((Console.WindowWidth / 2) + (content1.Length / 2)) + "}", content1));
             Console.WriteLine();

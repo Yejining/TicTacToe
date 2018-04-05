@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 
 using IO;
-using Data;
+using DataManager;
+using Judge;
 
 namespace Scene
 {
     class UvsCGame
     {
-        public static void Game(DataManager player1, DataManager player2)
+        public static void Game(PlayerInfo player1, PlayerInfo player2)
         {
             StringBuilder sceneNameBldr = new StringBuilder();
             string sceneName;
@@ -20,7 +21,7 @@ namespace Scene
             sceneName = sceneNameBldr.ToString();
             Print.Title(sceneName);
 
-
+            //Judge.Game.Start();
         }
     }
 }

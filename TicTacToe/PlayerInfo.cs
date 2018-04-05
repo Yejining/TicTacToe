@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Data
+namespace DataManager
 {
-    struct DataManager
+    struct PlayerInfo
     {
         private string name;
         private char stone;
